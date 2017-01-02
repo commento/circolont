@@ -1,0 +1,207 @@
+<script type="text/javascript" src="d3.min.js">
+var vis = d3.select("body").append("svg")
+var pi = Math.PI;
+    
+var arc = d3.svg.arc()
+    .innerRadius(65)
+    .outerRadius(70)
+    .startAngle(45 * (pi/180)) //converting from degs to radians
+    .endAngle(45) //just radians
+    
+var arc2 = d3.svg.arc()
+    .innerRadius(75)
+    .outerRadius(80)
+    .startAngle(45 * (pi/180)) //converting from degs to radians
+    .endAngle(45) //just radians
+
+vis.attr("width", "2000").attr("height", "2000") // Added height and width so arc is visible
+    .append("path")
+    .attr("id", "ciao")
+    .attr("d", arc)
+    .attr("fill", "black")
+    .attr("transform", "translate(190,180)")
+		.on("click", function(){
+    var timer = new Timer(onTick, 10,300);
+    });
+
+vis.attr("width", "2000").attr("height", "2000") // Added height and width so arc is visible
+    .append("path")
+    .attr("id", "mamma")
+    .attr("d", arc)
+    .attr("fill", "black")
+    .attr("transform", "translate(70,70)")			.on("click", function(){
+    var timer = new Timer(onTick2, 10,500);
+    });
+    
+vis.attr("width", "2000").attr("height", "2000") // Added height and width so arc is visible
+    .append("path")
+    .attr("id", "come")
+    .attr("d", arc)
+    .attr("fill", "black")
+    .attr("transform", "translate(70,300)");
+
+vis.attr("width", "2000").attr("height", "2000") // Added height and width so arc is visible
+    .append("path")    
+    .attr("id", "va")
+    .attr("d", arc)
+    .attr("fill", "black")
+    .attr("transform", "translate(300,70)");
+    
+vis.attr("width", "2000").attr("height", "2000") // Added height and width so arc is visible
+    .append("path")
+        .attr("id", "oggi")
+    .attr("d", arc)
+    .attr("fill", "black")
+    .attr("transform", "translate(300,300)");
+    
+    
+
+var i = 65;
+var j = 70;
+
+
+
+function Timer(funct, delayMs, times)
+{
+  if(times==undefined)
+  {
+    times=-1;
+  }
+  if(delayMs==undefined)
+  {
+    delayMs=10;
+  }
+  this.funct=funct;
+  var times=times;
+  var timesCount=0;
+  var ticks = (delayMs/10)|0;
+  var count=0;
+  Timer.instances.push(this);
+
+  this.tick = function()
+  {
+    if(count>=ticks)
+    {
+      this.funct();
+      count=0;
+      if(times>-1)
+      {
+        timesCount++;
+        if(timesCount>=times)
+        {
+          this.stop();
+        }
+      }
+    }
+    count++; 
+  };
+
+  this.stop=function()
+  {
+    var index = Timer.instances.indexOf(this);
+    Timer.instances.splice(index, 1);
+  };
+}
+
+Timer.instances=[];
+
+Timer.ontick=function()
+{
+  for(var i in Timer.instances)
+  {
+    Timer.instances[i].tick();
+  }
+};
+
+window.setInterval(Timer.ontick, 10);
+
+
+function onTick()
+{
+  var arc3 = d3.svg.arc()
+    .innerRadius(i++)
+    .outerRadius(j++)
+    .startAngle(45 * (pi/180)) //converting from degs to radians
+    .endAngle(45) //just radians
+    
+  
+  d3.select("#ciao").attr("d", arc3);
+  
+  if(i==600){
+  i = 65;
+  j = 70;
+  }
+}
+function onTick2()
+{
+  var arc3 = d3.svg.arc()
+    .innerRadius(i++)
+    .outerRadius(j++)
+    .startAngle(45 * (pi/180)) //converting from degs to radians
+    .endAngle(45) //just radians
+    
+  
+  d3.select("#mamma").attr("d", arc3);
+  
+  if(i==600){
+  i = 65;
+  j = 70;
+  }
+}
+
+function onTick3()
+{
+  var arc3 = d3.svg.arc()
+    .innerRadius(i++)
+    .outerRadius(j++)
+    .startAngle(45 * (pi/180)) //converting from degs to radians
+    .endAngle(45) //just radians
+    
+  
+  d3.select("#come").attr("d", arc3);
+  
+  if(i==600){
+  i = 65;
+  j = 70;
+  }
+}
+
+function onTick4()
+{
+  var arc3 = d3.svg.arc()
+    .innerRadius(i++)
+    .outerRadius(j++)
+    .startAngle(45 * (pi/180)) //converting from degs to radians
+    .endAngle(45) //just radians
+    
+  
+  d3.select("#va").attr("d", arc3);
+  
+  if(i==600){
+  i = 65;
+  j = 70;
+  }
+}
+
+function onTick5()
+{
+  var arc3 = d3.svg.arc()
+    .innerRadius(i++)
+    .outerRadius(j++)
+    .startAngle(45 * (pi/180)) //converting from degs to radians
+    .endAngle(45) //just radians
+    
+  
+  d3.select("#oggi").attr("d", arc3);
+  
+  if(i==600){
+  i = 65;
+  j = 70;
+  }
+}
+
+//var timer = new Timer(onTick2, 25,-1);
+//var timer = new Timer(onTick3, 15,-1);
+//var timer = new Timer(onTick4, 10,-1);
+//var timer = new Timer(onTick5, 40,-1);
+</script>
