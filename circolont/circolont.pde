@@ -136,55 +136,54 @@ void draw() {
 //in questo modo l'interfaccia risulta più fluida
 //vedi circles1
 
-  if(level[0] > MIN_LEVEL || circles0.size() != 1)
-  check(circles0); 
-  if(level[1] > MIN_LEVEL || circles1.size() != 1)
-  check(circles1);
-  if(level[2] > MIN_LEVEL || circles2.size() != 1)
-  check(circles2);
-  if(level[3] > MIN_LEVEL || circles3.size() != 1)
-  check(circles3);
-  if(level[4] > MIN_LEVEL || circles4.size() != 1)
-  check(circles4);
-  if(level[5] > MIN_LEVEL || circles5.size() != 1)
-  check(circles5);
-  if(level[6] > MIN_LEVEL || circles6.size() != 1)
-  check(circles6);
-  if(level[7] > MIN_LEVEL || circles7.size() != 1)
-  check(circles7);
-  if(level[8] > MIN_LEVEL || circles8.size() != 1)
-  check(circles8);
-  if(level[9] > MIN_LEVEL || circles9.size() != 1)
-  check(circles9);
+  if(level[0] > MIN_LEVEL  || circles0.size() != 1)
+    check(circles0); 
+  if(level[1] > MIN_LEVEL  || circles1.size() != 1)
+    check(circles1);
+  if(level[2] > MIN_LEVEL  || circles2.size() != 1)
+    check(circles2);
+  if(level[3] > MIN_LEVEL  || circles3.size() != 1)
+    check(circles3);
+  if(level[4] > MIN_LEVEL  || circles4.size() != 1)
+    check(circles4);
+  if(level[5] > MIN_LEVEL  || circles5.size() != 1)
+    check(circles5);
+  if(level[6] > MIN_LEVEL  || circles6.size() != 1)
+    check(circles6);
+  if(level[7] > MIN_LEVEL  || circles7.size() != 1)
+    check(circles7);
+  if(level[8] > MIN_LEVEL  || circles8.size() != 1)
+    check(circles8);
+  if(level[9] > MIN_LEVEL  || circles9.size() != 1)
+    check(circles9);
   if(level[10] > MIN_LEVEL || circles10.size() != 1)
-  check(circles10);
+    check(circles10);
   if(level[11] > MIN_LEVEL || circles11.size() != 1)
-  check(circles11);
-
-  if(level[12] > MIN_LEVEL|| circles12.size() != 1)
-  check(circles12);
-  if(level[13] > MIN_LEVEL|| circles13.size() != 1)
-  check(circles13);
-  if(level[14] > MIN_LEVEL|| circles14.size() != 1)
-  check(circles14);
-  if(level[15] > MIN_LEVEL|| circles15.size() != 1)
-  check(circles15);
-  if(level[16] > MIN_LEVEL|| circles16.size() != 1)
-  check(circles16);
-  if(level[17] > MIN_LEVEL|| circles17.size() != 1)
-  check(circles17);
-  if(level[18] > MIN_LEVEL|| circles18.size() != 1)
-  check(circles18);
-  if(level[19] > MIN_LEVEL|| circles19.size() != 1)
-  check(circles19);
-  if(level[20] > MIN_LEVEL|| circles20.size() != 1)
-  check(circles20);
-  if(level[21] > MIN_LEVEL|| circles21.size() != 1)
-  check(circles21);
+    check(circles11);
+  if(level[12] > MIN_LEVEL || circles12.size() != 1)
+    check(circles12);
+  if(level[13] > MIN_LEVEL || circles13.size() != 1)
+    check(circles13);
+  if(level[14] > MIN_LEVEL || circles14.size() != 1)
+    check(circles14);
+  if(level[15] > MIN_LEVEL || circles15.size() != 1)
+    check(circles15);
+  if(level[16] > MIN_LEVEL || circles16.size() != 1)
+    check(circles16);
+  if(level[17] > MIN_LEVEL || circles17.size() != 1)
+    check(circles17);
+  if(level[18] > MIN_LEVEL || circles18.size() != 1)
+    check(circles18);
+  if(level[19] > MIN_LEVEL || circles19.size() != 1)
+    check(circles19);
+  if(level[20] > MIN_LEVEL || circles20.size() != 1)
+    check(circles20);
+  if(level[21] > MIN_LEVEL || circles21.size() != 1)
+    check(circles21);
   if(level[22] > MIN_LEVEL || circles22.size() != 1)
-  check(circles22);
+    check(circles22);
   if(level[23] > MIN_LEVEL || circles23.size() != 1)
-  check(circles23);
+    check(circles23);
     
   int frequenz = (int)(MAX_FREQ/frequency[0]);
   if(pos % frequenz == 0){
