@@ -29,8 +29,9 @@ ArrayList circles23;
 
 void setup() {
   worldCamera = new Camera();
-  size(1280, 768);
-  //frameRate(1000000000);
+  size(800, 600);
+  //size(1280, 768);
+  //frameRate(40);
   stroke(255);  
   strokeWeight(0.1);
 circles0= new ArrayList();
@@ -108,8 +109,9 @@ final int MAX_FREQ = 10000;
 
 void draw() {
   clear();
-  scale (3.5+worldCamera.zoom);
-  translate(-470-worldCamera.pos.x, -290-worldCamera.pos.y);
+  scale (6+worldCamera.zoom); //3.5
+  //translate(-470-worldCamera.pos.x, -290-worldCamera.pos.y);
+  translate(-585-worldCamera.pos.x, -350-worldCamera.pos.y);
   worldCamera.draw();
   pos++;
 
