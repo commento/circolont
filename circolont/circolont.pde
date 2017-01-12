@@ -5,6 +5,28 @@ int frequenz;
 
 final int N_CIRCLE = 24;
 
+final int[][] CIRCLE12 = {        
+        {200, 100},
+        {250, 113},
+        {287, 150},
+        {300, 200},
+        {287, 250},
+        {250, 287},
+        {200, 300},
+        {150, 287},
+        {113, 250},
+        {100, 200},
+        {113, 150},
+        {150, 113}};
+        
+final int[][] CIRCLE6 = {        
+        {200, 100},
+        {287, 150},
+        {287, 250},
+        {200, 300},
+        {113, 250},
+        {113, 150}};
+
 final int[][] CIRCLE = {        
         {200, 100},
         {226, 103},
@@ -70,12 +92,13 @@ final int MAX_POS = 300; //500;
 final int MAX_FREQ = 10000;
 
 
-  float[] frequency = new float[24];
-  float[] level = new float[24];
+float[] frequency = new float[24];
+float[] level = new float[24];
   
-  String lines[];
-  String[] list;
+String lines[];
+String[] list;
   
+int update = 0;
   
 void draw() {
   clear();
@@ -87,7 +110,8 @@ void draw() {
   
 //diminuire i loop for valutando prima l'arrayList con il maggior numero di cerchi
 //poi fare il loop su tutti gli array controllando prima se è diverso da null
-  
+ 
+ if(update % 100 == 0){
  lines = loadStrings("a.txt");
 
  for (i=0; i < lines.length; i++) {
@@ -99,6 +123,7 @@ void draw() {
    //println( i + " frequency " + frequency[i] );
    //println( i + " level " + level[i] );
 
+ }
  }
      
 //forse è meglio fare il check del livello solo per i nuovi cerchi da generare
@@ -123,9 +148,9 @@ void draw() {
   //noFill();
   //noStroke();
   if (pos > MAX_POS) {
-    pos = 0;
+    pos = 1;
   }
-  
+  update++;
   //saveFrame();
 }
 
@@ -198,16 +223,14 @@ class Camera {
 Circle circle;
 int ix;
 void check (ArrayList circles)
-{
-
-   
+{ 
    for (ix = circles.size()-1; ix >= 0; ix--) { 
-       circle = (Circle) circles.get(ix);
-      if(circle.growth()==-1){
-        circles.remove(ix);
-      }else{
-          smooth();
-          circle.display();
-      }
+     circle = (Circle) circles.get(ix);
+    if(circle.growth()==-1){
+      circles.remove(ix);
+    }else{
+        smooth();
+        circle.display();
     }
+  }
 }
