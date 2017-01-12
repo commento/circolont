@@ -56,11 +56,13 @@ final int[][] CIRCLE = {
 int i;
 void setup() {
   worldCamera = new Camera();
-  size(800, 600);
-  //size(1280, 768);
-  //frameRate(40);
+  //size(800, 600,P2D);
+  size(1280, 768,P2D);
+  //frameRate(30);
   stroke(255);  
   strokeWeight(0.1);
+  scale (6+worldCamera.zoom); //3.5
+  translate(-585-worldCamera.pos.x, -350-worldCamera.pos.y);
     
   frequenz = 0;
   circles = (ArrayList<Circle>[])new ArrayList[N_CIRCLE];
@@ -76,19 +78,14 @@ void setup() {
 int xshift = 450;
 int yshift = 200;
 
-int xshift1 = 800;
-int yshift1 = 200;
-
-int xshift2 = 100;
-int yshift2 = 200;
-int id_VALUE = 0;
+//int id_VALUE = 0;
 
 int pos=0;
 
 final float MIN_LEVEL = -70.000;
 final float MAX_LEVEL = 6.000;
 
-final int MAX_POS = 300; //500;
+final int MAX_POS = 500; //1000; //500;
 final int MAX_FREQ = 10000;
 
 
@@ -98,20 +95,16 @@ float[] level = new float[24];
 String lines[];
 String[] list;
   
-int update = 0;
   
 void draw() {
   clear();
   scale (6+worldCamera.zoom); //3.5
-  //translate(-470-worldCamera.pos.x, -290-worldCamera.pos.y);
   translate(-585-worldCamera.pos.x, -350-worldCamera.pos.y);
   worldCamera.draw();
   pos++;
-  
-//diminuire i loop for valutando prima l'arrayList con il maggior numero di cerchi
-//poi fare il loop su tutti gli array controllando prima se è diverso da null
  
- if(update % 100 == 0){
+ //update from file every 100 frames
+ //if(pos == 1){
  lines = loadStrings("a.txt");
 
  for (i=0; i < lines.length; i++) {
@@ -124,13 +117,8 @@ void draw() {
    //println( i + " level " + level[i] );
 
  }
- }
+ //}
      
-//forse è meglio fare il check del livello solo per i nuovi cerchi da generare
-//in questo modo l'interfaccia risulta più fluida
-//vedi circles1
-
-       
   for(i=0; i < N_CIRCLE; i++) {
     if(level[i] > MIN_LEVEL  || circles[i].size() != 1)
       check(circles[i]); 
@@ -150,7 +138,7 @@ void draw() {
   if (pos > MAX_POS) {
     pos = 1;
   }
-  update++;
+
   //saveFrame();
 }
 
@@ -158,18 +146,18 @@ void draw() {
 
 class Circle { 
   
-  float id=id_VALUE;
+  //float id=id_VALUE;
   float xpos;
   float ypos;
   //float tempXspeed
   float plus=0;
   // The Constructor is defined with arguments.
   Circle( int index) { 
-    stroke(255);  
+    //stroke(255);  
     xpos = CIRCLE[index][0];
     ypos = CIRCLE[index][1];
 
-    id_VALUE++;
+    //id_VALUE++;
 
   }
 
@@ -229,7 +217,7 @@ void check (ArrayList circles)
     if(circle.growth()==-1){
       circles.remove(ix);
     }else{
-        smooth();
+        //smooth();
         circle.display();
     }
   }
