@@ -31,6 +31,7 @@ final int[][] CIRCLE = {
         {150, 113},
         {174, 103}};
 
+int i;
 void setup() {
   worldCamera = new Camera();
   size(800, 600);
@@ -38,15 +39,13 @@ void setup() {
   //frameRate(40);
   stroke(255);  
   strokeWeight(0.1);
-  
-  
+    
   frequenz = 0;
   circles = (ArrayList<Circle>[])new ArrayList[N_CIRCLE];
   
-  
-  for (int i=0; i < N_CIRCLE; i++) {
-        circles[i] = new ArrayList<Circle>();
-        circles[i].add(new Circle(i));
+  for (i=0; i < N_CIRCLE; i++) {
+    circles[i] = new ArrayList<Circle>();
+    circles[i].add(new Circle(i));
   }
 
   //loop();
@@ -71,7 +70,10 @@ final int MAX_POS = 300; //500;
 final int MAX_FREQ = 10000;
 
 
-
+  float[] frequency = new float[24];
+  float[] level = new float[24];
+  
+  String[] list;
 void draw() {
   clear();
   scale (6+worldCamera.zoom); //3.5
@@ -79,18 +81,15 @@ void draw() {
   translate(-585-worldCamera.pos.x, -350-worldCamera.pos.y);
   worldCamera.draw();
   pos++;
-
-  float[] frequency = new float[N_CIRCLE];
-  float[] level = new float[N_CIRCLE];
   
 //diminuire i loop for valutando prima l'arrayList con il maggior numero di cerchi
 //poi fare il loop su tutti gli array controllando prima se è diverso da null
   
  String lines[] = loadStrings("a.txt");
 
- for (int i=0; i < lines.length; i++) {
+ for (i=0; i < lines.length; i++) {
 
-   String[] list = split(lines[i], ' ');
+   list = split(lines[i], ' ');
    
    frequency[i] = float(list[0]);
    level[i] = float(list[1]);
@@ -104,23 +103,19 @@ void draw() {
 //vedi circles1
 
        
-    for (int i=0; i < N_CIRCLE; i++) {
-      //circle = (ArrayList<Circle>) circles.get(i);
+  for(i=0; i < N_CIRCLE; i++) {
     if(level[i] > MIN_LEVEL  || circles[i].size() != 1)
       check(circles[i]); 
-    }
-    
-   
-  for (int i=0; i < N_CIRCLE; i++) {
+  }
+      
+  for(i=0; i < N_CIRCLE; i++) {
     frequenz = (int)(MAX_FREQ/frequency[i]);
     if(pos % frequenz == 0){
       if(level[i] > MIN_LEVEL){
-        //circle = (ArrayList<Circle>) circles.get(i);
         circles[i].add(new Circle(i));
       }
     }
   }
-
 
   //noFill();
   //noStroke();
@@ -130,7 +125,6 @@ void draw() {
   
   //saveFrame();
 }
-
 
 
 
@@ -199,15 +193,15 @@ class Camera {
 }
 
 Circle circle;
-int i;
+int ix;
 void check (ArrayList circles)
 {
 
    
-   for (i = circles.size()-1; i >= 0; i--) { 
-       circle = (Circle) circles.get(i);
+   for (ix = circles.size()-1; ix >= 0; ix--) { 
+       circle = (Circle) circles.get(ix);
       if(circle.growth()==-1){
-        circles.remove(i);
+        circles.remove(ix);
       }else{
           smooth();
           circle.display();
