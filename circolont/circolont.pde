@@ -73,7 +73,10 @@ final int MAX_FREQ = 10000;
   float[] frequency = new float[24];
   float[] level = new float[24];
   
+  String lines[];
   String[] list;
+  
+  
 void draw() {
   clear();
   scale (6+worldCamera.zoom); //3.5
@@ -85,7 +88,7 @@ void draw() {
 //diminuire i loop for valutando prima l'arrayList con il maggior numero di cerchi
 //poi fare il loop su tutti gli array controllando prima se è diverso da null
   
- String lines[] = loadStrings("a.txt");
+ lines = loadStrings("a.txt");
 
  for (i=0; i < lines.length; i++) {
 
