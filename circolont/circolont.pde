@@ -56,9 +56,9 @@ final int[][] CIRCLE = {
 int i;
 void setup() {
   worldCamera = new Camera();
-  //size(800, 600,P2D);
-  size(1280, 768,P2D);
-  //frameRate(30);
+  size(800, 600,P2D);
+  //size(1280, 768,P2D);
+  frameRate(35);
   stroke(255);  
   strokeWeight(0.1);
   scale (6+worldCamera.zoom); //3.5
