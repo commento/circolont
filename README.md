@@ -1,4 +1,4 @@
-CIRCOLONT project
+# CIRCOLONT project
 
 Project under development related to the visual representation in processing.js of the audio generated with the max msp patch by 24 audio oscillators.
 
